@@ -135,7 +135,7 @@ h2{
 }
 .project-media img{width:100%;height:100%;object-fit:cover;display:block}
 .project-media-fallback{
-  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  position:absolute;inset:0;display:none;align-items:center;justify-content:center;
   color:var(--muted);font-size:26px;background:var(--bg3);
 }
 
@@ -319,7 +319,7 @@ h1{animation:fadeUp 0.4s 0.1s ease both}
     <!-- To add a real screenshot: replace the src below with your image path (e.g. images/mrflows.jpg). -->
     <a href="https://mrflows.my.id" target="_blank" rel="noopener" class="project-card">
       <div class="project-media">
-        <img src="images/halaman-1.jpg" alt="MrFlows screenshot" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <img src="images/halaman_1.jpg" alt="MrFlows screenshot" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
         <div class="project-media-fallback"><i class="ti ti-droplet" aria-hidden="true"></i></div>
       </div>
       <div class="project-header">
@@ -347,7 +347,10 @@ h1{animation:fadeUp 0.4s 0.1s ease both}
       </div>
       <div class="project-header">
         <div class="project-icon"><i class="ti ti-cloud" aria-hidden="true"></i></div>
-        <i class="ti ti-external-link project-link-icon" aria-hidden="true"></i>
+        <div style="display:flex;gap:10px;align-items:center">
+          <span class="status-badge"><span class="status-dot"></span>Live</span>
+          <i class="ti ti-external-link project-link-icon" aria-hidden="true"></i>
+        </div>
       </div>
       <div class="project-name">Meteorology Study Program — ITB</div>
       <div class="project-client"><i class="ti ti-building-bank" aria-hidden="true"></i> Client: Program Studi Meteorologi ITB</div>
@@ -362,12 +365,15 @@ h1{animation:fadeUp 0.4s 0.1s ease both}
     <!-- To add a real screenshot: replace the src below with your image path (e.g. images/disdikbud-kukar.jpg). -->
     <a href="https://sites.google.com/view/kelembagaansmp/beranda" target="_blank" rel="noopener" class="project-card">
       <div class="project-media">
-        <img src="images/disdi.png" alt="School Reporting screenshot" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <img src="images/disdik.png" alt="School Reporting screenshot" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
         <div class="project-media-fallback"><i class="ti ti-school" aria-hidden="true"></i></div>
       </div>
       <div class="project-header">
         <div class="project-icon"><i class="ti ti-school" aria-hidden="true"></i></div>
-        <i class="ti ti-external-link project-link-icon" aria-hidden="true"></i>
+        <div style="display:flex;gap:10px;align-items:center">
+          <span class="status-badge"><span class="status-dot"></span>Live</span>
+          <i class="ti ti-external-link project-link-icon" aria-hidden="true"></i>
+        </div>
       </div>
       <div class="project-name">School Reporting — Disdikbud Kutai</div>
       <div class="project-client"><i class="ti ti-building-bank" aria-hidden="true"></i> Client: Disdikbud Kutai Kartanegara</div>
@@ -387,7 +393,10 @@ h1{animation:fadeUp 0.4s 0.1s ease both}
       </div>
       <div class="project-header">
         <div class="project-icon"><i class="ti ti-building" aria-hidden="true"></i></div>
-        <i class="ti ti-external-link project-link-icon" aria-hidden="true"></i>
+        <div style="display:flex;gap:10px;align-items:center">
+          <span class="status-badge"><span class="status-dot"></span>Live</span>
+          <i class="ti ti-external-link project-link-icon" aria-hidden="true"></i>
+        </div>
       </div>
       <div class="project-name">ALSA LC UNMUL Website</div>
       <div class="project-client"><i class="ti ti-building-bank" aria-hidden="true"></i> Client: ALSA Local Chapter Unmul</div>
@@ -428,6 +437,14 @@ h1{animation:fadeUp 0.4s 0.1s ease both}
         <div class="exp-role">Product Support</div>
         <div class="exp-org">CircleGeo</div>
         <div class="exp-desc">Contributed to AI-driven geospatial solutions for environmental monitoring and applied climate analysis: built reliable backend APIs, automated real-time disaster data collection, processed remote sensing data for rice crop health analysis, and worked on predictive modeling of ENSO's impact on crop productivity.</div>
+      </div>
+    </div>
+    <div class="exp-item">
+      <div class="exp-date">Feb – Apr 2026</div>
+      <div>
+        <div class="exp-role">Thesis Student Intern</div>
+        <div class="exp-org">PT. Samudra Sains Teknologi</div>
+        <div class="exp-desc">Developed and enhanced the MrFlows platform as a web-based flood monitoring system.</div>
       </div>
     </div>
     <div class="exp-item">
