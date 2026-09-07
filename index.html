@@ -126,6 +126,19 @@ h2{
 .project-card:hover{border-color:rgba(74,244,194,0.3);transform:translateY(-2px)}
 .project-card:hover::before{opacity:1}
 .project-card.featured{grid-column:1/-1}
+
+/* Photo slot: drop a real screenshot in and it replaces the icon fallback automatically */
+.project-media{
+  position:relative;width:100%;aspect-ratio:16/9;
+  border-radius:8px;overflow:hidden;margin-bottom:16px;
+  background:var(--bg3);border:1px solid var(--border);
+}
+.project-media img{width:100%;height:100%;object-fit:cover;display:block}
+.project-media-fallback{
+  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  color:var(--muted);font-size:26px;background:var(--bg3);
+}
+
 .project-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:12px}
 .project-icon{
   width:40px;height:40px;border-radius:8px;
@@ -153,8 +166,18 @@ h2{
   border-radius:100px;background:rgba(74,244,194,0.08);
   color:var(--accent);border:1px solid rgba(74,244,194,0.2);
 }
+.status-badge.dev{background:rgba(251,191,36,0.08);color:#fbbf24;border-color:rgba(251,191,36,0.2)}
+.status-badge.offline{background:rgba(122,140,130,0.1);color:var(--muted);border-color:var(--border)}
 .status-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);animation:pulse 2s infinite}
+.status-badge.dev .status-dot{background:#fbbf24}
+.status-badge.offline .status-dot{background:var(--muted);animation:none}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
+
+.project-client{
+  display:flex;align-items:center;gap:6px;
+  font-size:12px;color:var(--muted);margin-bottom:10px;
+}
+.project-client i{color:var(--accent);font-size:13px}
 
 .exp-list{display:flex;flex-direction:column}
 .exp-item{
@@ -227,15 +250,15 @@ h1{animation:fadeUp 0.4s 0.1s ease both}
   </div>
   <div class="hero-stats">
     <div>
-      <div class="stat-num">5+</div>
+      <div class="stat-num">6+</div>
       <div class="stat-label">Published Projects</div>
     </div>
     <div>
-      <div class="stat-num">2</div>
+      <div class="stat-num">3</div>
       <div class="stat-label">Study Programs</div>
     </div>
     <div>
-      <div class="stat-num">6+</div>
+      <div class="stat-num">7+</div>
       <div class="stat-label">Internships & Roles</div>
     </div>
   </div>
@@ -246,7 +269,12 @@ h1{animation:fadeUp 0.4s 0.1s ease both}
   <h2>Work that's live<br>in production</h2>
   <div class="projects-grid">
 
-    <a href="http://202.10.47.103/dashboard" target="_blank" rel="noopener" class="project-card featured">
+    <!-- To add a real screenshot: replace the src below with your image path (e.g. images/bangka-flood.jpg). -->
+    <a href="https://floodforecast.tech/dashboard" target="_blank" rel="noopener" class="project-card featured">
+      <div class="project-media">
+        <img src="images/fotobangka.png" alt="Bangka Flood Forecast System screenshot" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="project-media-fallback"><i class="ti ti-wave-sine" aria-hidden="true"></i></div>
+      </div>
       <div class="project-header">
         <div class="project-icon"><i class="ti ti-wave-sine" aria-hidden="true"></i></div>
         <div style="display:flex;gap:10px;align-items:center">
@@ -255,25 +283,54 @@ h1{animation:fadeUp 0.4s 0.1s ease both}
         </div>
       </div>
       <div class="project-name">Bangka Flood Forecast System</div>
-      <div class="project-desc">Real-time flood monitoring and early warning dashboard for BWS Bangka Belitung. Integrated rainfall and water level data ingestion with map-based visualization for decision support.</div>
+      <div class="project-client"><i class="ti ti-building-bank" aria-hidden="true"></i> Client: BWS Bangka Belitung</div>
+      <div class="project-desc">Predictive ML/DL system forecasting river water levels 24 hours ahead for the Bangka Belitung region, built end-to-end as a full-stack web app to support flood mitigation and early warning.</div>
       <div class="project-tags">
         <span class="tag">Fullstack</span>
         <span class="tag blue">Python</span>
         <span class="tag blue">FastAPI</span>
         <span class="tag amber">PostgreSQL</span>
-        <span class="tag coral">Hydrology</span>
+        <span class="tag coral">Machine Learning</span>
       </div>
     </a>
 
+    <!-- To add a real screenshot: replace the src below with your image path (e.g. images/e-connect.jpg). -->
+    <a href="https://e-connect-bu-p.vercel.app/" target="_blank" rel="noopener" class="project-card">
+      <div class="project-media">
+        <img src="images/econnect.png" alt="E-Connect screenshot" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="project-media-fallback"><i class="ti ti-leaf" aria-hidden="true"></i></div>
+      </div>
+      <div class="project-header">
+        <div class="project-icon"><i class="ti ti-leaf" aria-hidden="true"></i></div>
+        <div style="display:flex;gap:10px;align-items:center">
+          <span class="status-badge dev"><span class="status-dot"></span>In Development</span>
+          <i class="ti ti-external-link project-link-icon" aria-hidden="true"></i>
+        </div>
+      </div>
+      <div class="project-name">E-Connect</div>
+      <div class="project-client"><i class="ti ti-building-bank" aria-hidden="true"></i> Client: Ikatan Alumni Teknik Lingkungan ITB</div>
+      <div class="project-desc">Digital platform for ITB's Environmental Engineering alumni association, built as frontend lead. Currently in active development.</div>
+      <div class="project-tags">
+        <span class="tag">Frontend</span>
+        <span class="tag blue">Web App</span>
+      </div>
+    </a>
+
+    <!-- To add a real screenshot: replace the src below with your image path (e.g. images/mrflows.jpg). -->
     <a href="https://mrflows.my.id" target="_blank" rel="noopener" class="project-card">
+      <div class="project-media">
+        <img src="images/halaman-1.jpg" alt="MrFlows screenshot" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="project-media-fallback"><i class="ti ti-droplet" aria-hidden="true"></i></div>
+      </div>
       <div class="project-header">
         <div class="project-icon"><i class="ti ti-droplet" aria-hidden="true"></i></div>
         <div style="display:flex;gap:10px;align-items:center">
-          <span class="status-badge"><span class="status-dot"></span>Live</span>
+          <span class="status-badge offline"><span class="status-dot"></span>Offline</span>
           <i class="ti ti-external-link project-link-icon" aria-hidden="true"></i>
         </div>
       </div>
       <div class="project-name">MrFlows — Flood Monitoring</div>
+      <div class="project-client"><i class="ti ti-building-bank" aria-hidden="true"></i> Client: Balai Majalaya</div>
       <div class="project-desc">End-to-end hydrological data pipeline for the Majalaya watershed. Automated scraping, validation, and database sync with timestamped station data.</div>
       <div class="project-tags">
         <span class="tag">Data Eng</span>
@@ -282,12 +339,18 @@ h1{animation:fadeUp 0.4s 0.1s ease both}
       </div>
     </a>
 
+    <!-- To add a real screenshot: replace the src below with your image path (e.g. images/meteo-itb.jpg). -->
     <a href="https://meteo.itb.ac.id/id/" target="_blank" rel="noopener" class="project-card">
+      <div class="project-media">
+        <img src="images/meteo.png" alt="Meteorology ITB website screenshot" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="project-media-fallback"><i class="ti ti-cloud" aria-hidden="true"></i></div>
+      </div>
       <div class="project-header">
         <div class="project-icon"><i class="ti ti-cloud" aria-hidden="true"></i></div>
         <i class="ti ti-external-link project-link-icon" aria-hidden="true"></i>
       </div>
       <div class="project-name">Meteorology Study Program — ITB</div>
+      <div class="project-client"><i class="ti ti-building-bank" aria-hidden="true"></i> Client: Program Studi Meteorologi ITB</div>
       <div class="project-desc">Official website for ITB's Meteorology department. Full UI/UX redesign with improved navigation, custom CSS, and responsive WordPress implementation.</div>
       <div class="project-tags">
         <span class="tag">UI/UX</span>
@@ -296,12 +359,18 @@ h1{animation:fadeUp 0.4s 0.1s ease both}
       </div>
     </a>
 
+    <!-- To add a real screenshot: replace the src below with your image path (e.g. images/disdikbud-kukar.jpg). -->
     <a href="https://sites.google.com/view/kelembagaansmp/beranda" target="_blank" rel="noopener" class="project-card">
+      <div class="project-media">
+        <img src="images/disdi.png" alt="School Reporting screenshot" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="project-media-fallback"><i class="ti ti-school" aria-hidden="true"></i></div>
+      </div>
       <div class="project-header">
         <div class="project-icon"><i class="ti ti-school" aria-hidden="true"></i></div>
         <i class="ti ti-external-link project-link-icon" aria-hidden="true"></i>
       </div>
       <div class="project-name">School Reporting — Disdikbud Kutai</div>
+      <div class="project-client"><i class="ti ti-building-bank" aria-hidden="true"></i> Client: Disdikbud Kutai Kartanegara</div>
       <div class="project-desc">Fullstack reporting platform for Kutai Kartanegara's Education Dept. Serverless backend via Google Apps Script syncing admin data to spreadsheets.</div>
       <div class="project-tags">
         <span class="tag">Fullstack</span>
@@ -310,12 +379,18 @@ h1{animation:fadeUp 0.4s 0.1s ease both}
       </div>
     </a>
 
+    <!-- To add a real screenshot: replace the src below with your image path (e.g. images/alsa-unmul.jpg). -->
     <a href="https://alsalcunmul.org" target="_blank" rel="noopener" class="project-card">
+      <div class="project-media">
+        <img src="images/alsalcunmul.png" alt="ALSA LC UNMUL website screenshot" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="project-media-fallback"><i class="ti ti-building" aria-hidden="true"></i></div>
+      </div>
       <div class="project-header">
         <div class="project-icon"><i class="ti ti-building" aria-hidden="true"></i></div>
         <i class="ti ti-external-link project-link-icon" aria-hidden="true"></i>
       </div>
       <div class="project-name">ALSA LC UNMUL Website</div>
+      <div class="project-client"><i class="ti ti-building-bank" aria-hidden="true"></i> Client: ALSA Local Chapter Unmul</div>
       <div class="project-desc">Responsive organizational website for ALSA Local Chapter Unmul. TypeScript + Tailwind frontend with Apps Script backend and Google Sheets API integration.</div>
       <div class="project-tags">
         <span class="tag">Fullstack</span>
@@ -332,27 +407,27 @@ h1{animation:fadeUp 0.4s 0.1s ease both}
   <h2>Roles &<br>internships</h2>
   <div class="exp-list">
     <div class="exp-item">
-      <div class="exp-date">Apr 2026<br>Present</div>
+      <div class="exp-date">Aug 2026<br>Present</div>
+      <div>
+        <div class="exp-role">Fullstack Engineer</div>
+        <div class="exp-org">PT Sayap Mas Utama (WINGSGroup)</div>
+        <div class="exp-desc">Working within the Manufacturing Digitalization & Transformation division, building a monitoring platform for operational machines and equipment. Integrating front-end and back-end to surface real-time monitoring data, supporting the company's digital transformation and manufacturing efficiency.</div>
+      </div>
+    </div>
+    <div class="exp-item">
+      <div class="exp-date">Apr – Jul 2026</div>
       <div>
         <div class="exp-role">Research Assistant</div>
-        <div class="exp-org">Informatics — Telkom University</div>
-        <div class="exp-desc">Supporting active research within the informatics study program.</div>
+        <div class="exp-org">Telkom University</div>
+        <div class="exp-desc">Contributed to a predictive Machine Learning / Deep Learning system forecasting river water levels 24 hours ahead in the Bangka Belitung region. Designed and built the full-stack web app end-to-end to present the data and interactive water-level estimates, supporting BBWS Bangka Belitung's flood mitigation and early-warning research.</div>
       </div>
     </div>
     <div class="exp-item">
-      <div class="exp-date">Mar 2026<br>Present</div>
+      <div class="exp-date">Mar – Jun 2026</div>
       <div>
-        <div class="exp-role">Product Support Intern</div>
+        <div class="exp-role">Product Support</div>
         <div class="exp-org">CircleGeo</div>
-        <div class="exp-desc">Geospatial product support and operations.</div>
-      </div>
-    </div>
-    <div class="exp-item">
-      <div class="exp-date">Feb – Apr 2026</div>
-      <div>
-        <div class="exp-role">Thesis Student Intern</div>
-        <div class="exp-org">PT. Samudra Sains Teknologi</div>
-        <div class="exp-desc">Developed MrFlows: a web-based flood monitoring system with real-time rainfall and water level features for the Majalaya watershed.</div>
+        <div class="exp-desc">Contributed to AI-driven geospatial solutions for environmental monitoring and applied climate analysis: built reliable backend APIs, automated real-time disaster data collection, processed remote sensing data for rice crop health analysis, and worked on predictive modeling of ENSO's impact on crop productivity.</div>
       </div>
     </div>
     <div class="exp-item">
@@ -360,23 +435,31 @@ h1{animation:fadeUp 0.4s 0.1s ease both}
       <div>
         <div class="exp-role">Surveyor</div>
         <div class="exp-org">KEBTKE BBSP ESDM — Maluku</div>
-        <div class="exp-desc">Field surveyor for Solar Power Plant (PLTS) construction planning project.</div>
+        <div class="exp-desc">Field surveyor for Solar Power Plant (PLTS) construction planning project. Recorded, compiled, and managed field survey data, and digitized survey records from manual to digital formats for better traceability and analysis.</div>
       </div>
     </div>
     <div class="exp-item">
-      <div class="exp-date">Jul – Aug 2025</div>
+      <div class="exp-date">Jul 2025</div>
       <div>
         <div class="exp-role">Climate & Hydropower Modeling Intern</div>
         <div class="exp-org">Ministry of Energy & Mineral Resources — Jakarta</div>
-        <div class="exp-desc">Processed large-scale climate and hydrological datasets. Integrated satellite rainfall data with AWS ground observations. Validated multi-source datasets (AWS, pyranometer, WRF outputs).</div>
+        <div class="exp-desc">Ran climate projections for hydropower planning, including future rainfall scenario analysis. Corrected satellite rainfall data using ground-based observations to improve dataset accuracy, and verified data using AWS, pyranometer, and WRF model outputs for quality and consistency.</div>
+      </div>
+    </div>
+    <div class="exp-item">
+      <div class="exp-date">Jun 2024 –<br>Jul 2025</div>
+      <div>
+        <div class="exp-role">Frontend Developer</div>
+        <div class="exp-org">Program Studi Meteorologi, ITB</div>
+        <div class="exp-desc">Developed and launched the official Meteorology Study Program website to modernize its digital presence. Led a full UI/UX redesign focused on improved navigation and a more professional visual identity, built on WordPress with custom CSS for a unique, responsive look. Continue to maintain and update the site's content and performance.</div>
       </div>
     </div>
     <div class="exp-item">
       <div class="exp-date">Jul 2024 –<br>Aug 2025</div>
       <div>
-        <div class="exp-role">Data Engineer Intern</div>
+        <div class="exp-role">Fullstack Developer</div>
         <div class="exp-org">Dept. of Education & Culture — Kutai Kartanegara</div>
-        <div class="exp-desc">Built automated workflows with Google Apps Script for large-scale administrative datasets. Managed structured data in Google Sheets for monitoring and reporting.</div>
+        <div class="exp-desc">Ran training and outreach sessions for principals and school operators on using the reporting website. Maintained the site, including data cleaning and organizing school reports collected via Google Sheets, and trained teachers on Google Workspace for more effective digital reporting workflows.</div>
       </div>
     </div>
   </div>
@@ -411,10 +494,12 @@ h1{animation:fadeUp 0.4s 0.1s ease both}
       <div class="skill-group-title">Data & Science</div>
       <div class="skill-pills">
         <span class="skill-pill">Machine Learning</span>
+        <span class="skill-pill">Deep Learning</span>
         <span class="skill-pill">Data Analysis</span>
         <span class="skill-pill">Hydrological Modeling</span>
         <span class="skill-pill">WRF Outputs</span>
         <span class="skill-pill">Satellite Data</span>
+        <span class="skill-pill">Remote Sensing</span>
       </div>
     </div>
     <div class="skill-group">
@@ -435,7 +520,7 @@ h1{animation:fadeUp 0.4s 0.1s ease both}
     <a href="https://www.linkedin.com/in/muammarirza" target="_blank" rel="noopener"><i class="ti ti-brand-linkedin" aria-hidden="true"></i> LinkedIn</a>
     <a href="tel:+6289503119460"><i class="ti ti-phone" aria-hidden="true"></i> +62 895 0311 9460</a>
   </div>
-  <div class="footer-copy">© 2025 Muammar Irza Choirruzzat — Bandung, Indonesia</div>
+  <div class="footer-copy">© 2026 Muammar Irza Choirruzzat — Bandung, Indonesia</div>
 </footer>
 
 </div>
